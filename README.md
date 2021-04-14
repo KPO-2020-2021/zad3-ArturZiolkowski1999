@@ -1,18 +1,18 @@
+# Initialization
+1. Create "build" directory in main project directory
+3. Go to build and use "cmake .." command
+4. Use "make" command
+5. For running tests run build/tst/rotation2D_tst
+7. For running main program run /build/rotation2D_run 
+8. Enjoy !
 
-## Building
+# Program structure
+The program includes 4 classes. The first is Vector, next one is Matrix2x2.
+Is contains static table of doubles. Class that contains all above is Rectangle. 
+method rotate and translate with belong to this class rotate or translate vertices of given rectangle. 
+Final class is GnuplotDrawings which enable program to comunicate with Gnuplot through external static
+library "LaczeDoGnuplota".
 
-Build by making a build directory (i.e. `build/`), run `cmake` in that dir, and then use `make` to build the desired target.
-
-Example:
-
-``` bash
-> mkdir build && cd build
-> cmake .. -DCMAKE_BUILD_TYPE=[Debug | Coverage | Release]
-> make
-> ./main
-> make test      # Makes and runs the tests.
-> make coverage  # Generate a coverage report.
-> make doc       # Generate html documentation.
-```
-
-
+# Info
+In lib directory is local version of "Gtests" and "LaczeDoGnuplota" external library used for tests and is program.
+In tst directory are all test, inferior CmakeList, and main function for running all tests.

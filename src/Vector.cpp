@@ -64,8 +64,8 @@ Vector operator/(Vector &Vec, const double &Num){
 std::ostream & operator<<(std::ostream & ost, const Vector &Vec){
     std::cout << std::fixed;
     std::cout << std::setprecision(VECTOR_PRECISION);
-    ost << "x: " << Vec.vector[0];
-    ost << " y: " << Vec.vector[1] << std::endl;
+    ost << Vec.vector[0] << " ";
+    ost << Vec.vector[1] << std::endl;
     return ost;
 }
 
@@ -88,4 +88,39 @@ double const Vector::getY(){
 double Vector::getLength(){
     double length = sqrt((this->getX()) * (this->getX()) + (this->getY()) * (this->getY()));
     return length;
+}
+
+const double &Vector::operator[](int index) const {
+    switch (index) {
+        case 0:
+            return this->vector[0];
+        case 1:
+            return this->vector[1];
+        default:
+            throw std::invalid_argument("");
+    }
+}
+
+double &Vector::operator[](int index) {
+    switch (index) {
+        case 0:
+            return this->vector[0];
+        case 1:
+            return this->vector[1];
+        default:
+            throw std::invalid_argument("");
+    }
+}
+
+std::istream &operator>>(std::istream &ist, Vector &Vec) {
+    double x,y;
+    std::cout << "enter x cord of vector:\n";
+    ist >> x;
+    Vec[0] = x;
+
+    std::cout << "enter y cord of vector:\n";
+    ist >> y;
+    Vec[1] = y;
+
+    return ist;
 }

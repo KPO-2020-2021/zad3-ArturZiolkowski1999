@@ -84,3 +84,17 @@ Vector operator*(const Matrix2x2 &matrix, Vector &vec){
     result.setY(vec.getX() * matrix.matrix[1][0] + vec.getY() * matrix.matrix[1][1]);
     return result;
 }
+
+double &Matrix2x2::operator()(int row, int column) {
+    if(row >= MATRIX_DIM || row < 0 || column >= MATRIX_DIM || column < 0){
+        throw std::invalid_argument("index out of range");
+    }
+    return matrix[row][column];
+}
+
+const double &Matrix2x2::operator()(int row, int column) const {
+    if(row >= MATRIX_DIM || row < 0 || column >= MATRIX_DIM || column < 0){
+        throw std::invalid_argument("index out of range");
+    }
+    return matrix[row][column];
+}
