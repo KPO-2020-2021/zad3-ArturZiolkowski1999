@@ -15,7 +15,8 @@
 
 class Rectangle {
 private:
-    Vector centerOfMass;
+
+    Vector centerOfMass; // i left this because it help when you want rotate vector over axis perpendicular to center of rectangle
     Vector vertices[VERTICES_NUMBER];
     void sortVertices(Vector &Vec1, Vector &Vec2, Vector &Vec3, Vector &Vec4);
 

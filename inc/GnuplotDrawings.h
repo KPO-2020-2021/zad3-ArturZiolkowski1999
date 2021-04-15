@@ -15,19 +15,14 @@ private:
     PzG::LaczeDoGNUPlota GNU;
     double XRange[2];
     double YRange[2];
-//    .---..__       ,
-//    |'-._    ``'--/ `\._
-//    /'-._`'--.._.'   |  '--._
-//    |    `''--...___/__....--`\
-//    \    LACZE DO GNUPLOTA    /
-//    |`'-----------..........-'|
-//    \_____.---.______________/
+
 public:
     GnuplotDrawings();
     GnuplotDrawings(std::string _fileName, double _XRange[2], double _YRange[2]);
     void drawRectangle(Rectangle &Rec);
     void drawVector(Vector &Vec);
-    void animateDrawRectangle(Rectangle &Rec, double &degree);
+    void animateRotateRectangle(Rectangle &Rec, double &degree);
+    void animateTranslateRectangle(Rectangle &Rec, Vector &translation);
 };
 
 #endif //ROTATION2D_GNUPLOTDRAWINGS_H

@@ -49,7 +49,7 @@ void GnuplotDrawings::drawVector(Vector &Vec){
     os.close();
 }
 
-void GnuplotDrawings::animateDrawRectangle(Rectangle &Rec, double &degree) {
+void GnuplotDrawings::animateRotateRectangle(Rectangle &Rec, double &degree) {
     Rectangle animateRec = Rec;
     double singleDegree = 0;
     while (std::abs(singleDegree) < std::abs(degree)){
@@ -63,5 +63,24 @@ void GnuplotDrawings::animateDrawRectangle(Rectangle &Rec, double &degree) {
         drawRectangle(animateRec);
     }
     Rec.rotationByDegrees(degree);
+    drawRectangle(Rec);
+}
+
+void GnuplotDrawings::animateTranslateRectangle(Rectangle &Rec, Vector &translation) {
+    Rectangle animateRec = Rec;
+    Vector animateTranslation = translation/translation.getLength();
+    Vector unityTranslation = translation/translation.getLength();
+    unityTranslation = unityTranslation/RESOLUTION;
+    double i = 0;
+    while (animateTranslation.getLength() < translation.getLength()){
+        i++;
+        animateTranslation = unityTranslation * i;
+        animateRec.translationByVector(animateTranslation);
+        usleep(ANIMATION_SPEED);
+        drawRectangle(animateRec);
+        animateTranslation = animateTranslation + unityTranslation;
+        animateRec = Rec;
+    }
+    Rec.translationByVector(translation);
     drawRectangle(Rec);
 }

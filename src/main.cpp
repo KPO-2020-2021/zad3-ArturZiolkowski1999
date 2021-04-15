@@ -20,8 +20,8 @@ int main(int argc, char** argv) {
     std::pair <double, double> sides;
     /* Initialize "Lacze do gnuplota" to work with */
     std ::string file ="../data/xd.txt";
-    double XRange[2] = {-20, 20};
-    double YRange[2] = {-20, 20};
+    double XRange[2] = {-30, 30};
+    double YRange[2] = {-30, 30};
     GnuplotDrawings gnu = GnuplotDrawings(file, XRange, YRange);
     /* Drawing initial rectangle and display menu*/
     menuDisplay();
@@ -43,12 +43,13 @@ int main(int argc, char** argv) {
                 std::cout << "enter amount of rotation:\n";
                 std::cin >> amountOfRotation;
                 degree *= amountOfRotation;
-                gnu.animateDrawRectangle(rec, degree);
+                gnu.animateRotateRectangle(rec, degree);
                 std::cout << "You chose: '"<< c << "' (m-menu)\n";
                 break;
             case 'p':
                 std::cin >> translation;
-                rec.translationByVector(translation);
+                gnu.animateTranslateRectangle(rec,translation);
+//                rec.translationByVector(translation);
                 std::cout << "You chose: '"<< c << "' (m-menu)\n";
                 break;
             case 'w':
@@ -58,8 +59,8 @@ int main(int argc, char** argv) {
                 break;
             case 'l':
                 sides = rec.getSidesLength(rec[0], rec[1], rec[2], rec[3]);
-                std::cout << "shorter side: " << sides.first << std::endl;
-                std::cout << "longer side: " << sides.second << std::endl;
+                std::cout << "shorter side: " << sides.second << std::endl;
+                std::cout << "longer side: " << sides.first << std::endl;
                 break;
             default:
                 std::cout << "unknown argument, pleas use correct arguments\n";

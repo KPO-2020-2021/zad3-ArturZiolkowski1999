@@ -11,7 +11,7 @@ The program includes 4 classes. The first is Vector, next one is Matrix2x2.
 Is contains static table of doubles. Class that contains all above is Rectangle. 
 method rotate and translate with belong to this class rotate or translate vertices of given rectangle. 
 Final class is GnuplotDrawings which enable program to comunicate with Gnuplot through external static
-library "LaczeDoGnuplota".
+library "LaczeDoGnuplota". For the program to run corectly you have to initialize rectangle with 4 vertices which create perpendicular sides.
 
 # Info
 In lib directory is local version of "Gtests" and "LaczeDoGnuplota" external library used for tests and is program.

@@ -41,6 +41,9 @@ void Rectangle::sortVertices(Vector &Vec1, Vector &Vec2, Vector &Vec3, Vector &V
 Rectangle::Rectangle(Vector &ver1, Vector &ver2, Vector &ver3, Vector &ver4){
 
     sortVertices(ver1, ver2, ver3, ver4);
+    if (ver1 == ver2 || ver1 == ver3 || ver1 == ver4 || ver2 == ver3 || ver2 == ver4 || ver3 == ver4){
+        throw std::invalid_argument("one ore more vertices is the same in rectangle");
+    }
     Vector tmp1 = ver2 - ver4;
     Vector tmp2 = tmp1 / 2;
     Vector center = tmp2 + ver4;

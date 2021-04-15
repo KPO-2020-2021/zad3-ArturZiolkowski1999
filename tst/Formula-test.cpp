@@ -75,6 +75,11 @@ TEST (Vector9, Indexing) {
     Vector Vec1 = Vector(2,4);
 
     EXPECT_EQ(Vec1[1], 4);
+
+    Vec1[0] = 3;
+    Vec1[1] = 4;
+    EXPECT_EQ(Vec1, Vector(3,4));
+
 }
 
 TEST (Vector10, Ostream) {
@@ -82,6 +87,7 @@ TEST (Vector10, Ostream) {
     std::stringstream ost;
     Vector vec = Vector(3.1,3.1);
     ost << vec;
+    /* in cout program print double in 10 decimal point fixed precision, but i didnt know how to automaticly test cout*/
     EXPECT_EQ("3.1 3.1\n", ost.str());
 }
 
@@ -90,6 +96,10 @@ TEST (Vector11, GetLength) {
     Vector Vec1 = Vector(3,4);
     double length = Vec1.getLength();
     EXPECT_EQ(length, 5);
+
+    Vec1 = Vector(0,6);
+    length = Vec1.getLength();
+    EXPECT_EQ(length, 6);
 }
 
 TEST (Matrix1, EmptyConstructor) {
@@ -129,14 +139,13 @@ TEST (Matrix3, MultiplicationMatrixVector) {
 
 TEST (Matrix4, MultiplicationMatrixVector) {
 
-    Matrix2x2 A = Matrix2x2();
-    Vector vec = Vector(1,1);
+    Matrix2x2 A = Matrix2x2(0);
+    Vector vec = Vector(1,2);
     Vector result = Vector();
 
-    A.setMatrix(1,2,3,4);
     result = A*vec;
 
-    EXPECT_EQ(result, Vector(3,7));
+    EXPECT_EQ(result, Vector(1,2));
 }
 
 TEST (Matrix5, Indexing) {
@@ -154,6 +163,7 @@ TEST (Matrix5, Indexing) {
     result = A*vec;
 
     EXPECT_EQ(result, Vector(3,7));
+    EXPECT_EQ(A(0,1), 2);
 }
 
 TEST (Matrix6, FailIndexing) {
@@ -221,6 +231,18 @@ TEST (Rectangle3, ConstructorWithMixedUpVerticesInArguments) {
     EXPECT_EQ(Adam, Ewa);
 }
 
+TEST (Rectangle3, FailConstructor) {
+
+    Vector Ver1 = Vector(1,3);
+    Vector Ver2 = Vector(3,3);
+    Vector Ver3 = Vector(3,1);
+    Vector Ver4 = Vector(1,1);
+
+    Rectangle Adam;
+
+    EXPECT_THROW(Adam = Rectangle(Ver1, Ver1, Ver4, Ver3), std::invalid_argument);
+}
+
 TEST (Rectangle4, TranslationByWector) {
 
     Vector Ver1 = Vector(1,3);
@@ -276,7 +298,7 @@ TEST (Rectangle6, RectangleOstream) {
 
     Rectangle Adam = Rectangle(Ver1, Ver2, Ver3, Ver4);
     ost << Adam;
-
+    /* rectangle in cout give 10 decimal point fixed precision */
     EXPECT_EQ("1 3\n3 3\n3 1\n1 1\n", ost.str());
 }
 
