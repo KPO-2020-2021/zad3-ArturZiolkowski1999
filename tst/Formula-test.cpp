@@ -178,6 +178,30 @@ TEST (Matrix6, FailIndexing) {
     EXPECT_THROW(A(2,4), std::invalid_argument);
 }
 
+TEST (Matrix7, getDeterminent) {
+
+    Matrix2x2 A = Matrix2x2();
+    A.setMatrix(2,1,1,1);
+    double det = A.getDeterminant();
+    EXPECT_EQ(det, 1);
+
+    A.setMatrix(5,1,1,2);
+    det = A.getDeterminant();
+    EXPECT_EQ(det, 9);
+
+    A.setMatrix(1,1.25,1,1);
+    det = A.getDeterminant();
+    double result = -0.25;
+    EXPECT_EQ(det, result);
+}
+
+TEST (Matrix8, zeroDeterminent) {
+
+    Matrix2x2 A = Matrix2x2();
+    A.setMatrix(0, 1, 1, 0);
+    EXPECT_EQ(0, A.getDeterminant());
+}
+
 TEST (Rectangle1, EmptyConstructor) {
 
     Rectangle Adam = Rectangle();

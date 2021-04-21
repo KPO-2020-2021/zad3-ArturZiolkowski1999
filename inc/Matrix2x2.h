@@ -12,9 +12,10 @@ private:
 
     double degreeToRadians(double degree);
 public:
+    double getDeterminant();
     Matrix2x2();
     Matrix2x2(double degree);
-    void setMatrix(double a, double b, double c, double d); // Too delate
+    void setMatrix(double a, double b, double c, double d);
     friend bool operator==(const Matrix2x2 &matrix1, const Matrix2x2 &matrix2);
     friend Vector operator*(const Matrix2x2 &matrix, Vector &vec);
     double &operator()(int row, int column);

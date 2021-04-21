@@ -98,3 +98,37 @@ const double &Matrix2x2::operator()(int row, int column) const {
     }
     return matrix[row][column];
 }
+
+double Matrix2x2::getDeterminant() {
+    double A[MATRIX_DIM][MATRIX_DIM];
+    double ratio;
+    double det = 1;
+
+    int i, j, k, l, m;
+    // writing matrix content on A - matrix
+    for(i = 0; i < MATRIX_DIM; i++){
+        for(int j = 0; j < MATRIX_DIM; j++){
+            A[i][j] = this->matrix[i][j];
+        }
+    }
+    // Gaussian elimination
+    for(k = 0; k < MATRIX_DIM-1; k++){
+        if(A[k][k] == 0.0){
+            return 0.0;
+        }
+        for(l = k+1; l < MATRIX_DIM; l++){
+            if(k!=l){
+                ratio = (A[l][k] / A[k][k]);
+            }
+            for(m = 0; m < MATRIX_DIM; m++){
+                A[l][m] = A[l][m] - ratio * A[k][m];
+            }
+        }
+    }
+    // Calculating determinant using now diagonal A matrix
+    for(int t = 0; t < MATRIX_DIM; t++){
+        det *= A[t][t];
+    }
+
+    return det;
+}

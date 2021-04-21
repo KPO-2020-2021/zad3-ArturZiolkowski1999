@@ -15,4 +15,6 @@ library "LaczeDoGnuplota". For the program to run corectly you have to initializ
 
 # Info
 In lib directory is local version of "Gtests" and "LaczeDoGnuplota" external library used for tests and is program.
-In tst directory are all test, inferior CmakeList, and main function for running all tests.
+In tst directory are all test, inferior CmakeList, and main function for running all tests. PS, In this program
+I decided to avoid scaling numeric error linked with non ideal double - number representation, by simply multiplying 
+rotational angle by the times user wan to rotate, instead of rotating rectangle over and over by the chosen angle.
