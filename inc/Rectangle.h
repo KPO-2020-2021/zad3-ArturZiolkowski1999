@@ -31,6 +31,6 @@ public:
     void rotationByDegrees(double degree);
     void translationByVector(Vector &Vec);
     friend std::ostream & operator<<(std::ostream & ost, Rectangle &Rect);
-    std::pair<double, double> getSidesLength(Vector &ver1, Vector &ver2, Vector &ver3, Vector &ver4);
+    std::pair<double, double> getSidesLength(Vector &ver1, Vector &ver2, Vector &ver3, Vector &ver4, int sides);
 };
 #endif //ROTATION2D_RECTANGLE_H

@@ -102,13 +102,21 @@ std::ostream & operator<<(std::ostream & ost, Rectangle &Rect){
     return ost;
 }
 
-std::pair<double, double> Rectangle::getSidesLength(Vector &ver1, Vector &ver2, Vector &ver3, Vector &ver4){
+std::pair<double, double> Rectangle::getSidesLength(Vector &ver1, Vector &ver2, Vector &ver3, Vector &ver4, int typ){
     sortVertices(ver1, ver2, ver3, ver4);
     //ver4 -> Left down corner, ver2 -> right up corner, ver1, ver3 -> rest corners
     std::pair<double, double> sides;
     double tmp;
     Vector side1 = ver4 - ver3;
     Vector side2 = ver4 - ver1;
+    if(typ == 1){
+        side1 = ver4 - ver3;
+        side2 = ver4 - ver1;
+    }else if(typ == 2){
+        side1 = ver2 - ver3;
+        side2 = ver2 - ver1;
+    }
+
     sides.first = side1.getLength();
     sides.second = side2.getLength();
     if(sides.first < sides.second){

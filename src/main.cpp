@@ -58,9 +58,12 @@ int main(int argc, char** argv) {
             case 'k':
                 break;
             case 'l':
-                sides = rec.getSidesLength(rec[0], rec[1], rec[2], rec[3]);
+                sides = rec.getSidesLength(rec[0], rec[1], rec[2], rec[3], 1);
                 std::cout << "shorter side: " << sides.second << std::endl;
                 std::cout << "longer side: " << sides.first << std::endl;
+                sides = rec.getSidesLength(rec[0], rec[1], rec[2], rec[3], 2);
+                std::cout << "shorter side 2: " << sides.second << std::endl;
+                std::cout << "longer side 2: " << sides.first << std::endl;
                 break;
             default:
                 std::cout << "unknown argument, pleas use correct arguments\n";

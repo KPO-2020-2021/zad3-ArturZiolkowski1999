@@ -335,7 +335,7 @@ TEST (Rectangle7, GetSidesLength) {
     Vector Ver4 = Vector(3, 1);
 
     Rectangle Adam = Rectangle(Ver1, Ver2, Ver3, Ver4);
-    std::pair<double,double> sides = Adam.getSidesLength(Ver1, Ver2, Ver3, Ver4);
+    std::pair<double,double> sides = Adam.getSidesLength(Ver1, Ver2, Ver3, Ver4, 1);
     double shorterSide = sides.first;
     double longerSide = sides.second;
 
