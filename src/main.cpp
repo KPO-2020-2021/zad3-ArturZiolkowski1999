@@ -49,7 +49,6 @@ int main(int argc, char** argv) {
             case 'p':
                 std::cin >> translation;
                 gnu.animateTranslateRectangle(rec,translation);
-//                rec.translationByVector(translation);
                 std::cout << "You chose: '"<< c << "' (m-menu)\n";
                 break;
             case 'w':
